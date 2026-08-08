@@ -30,7 +30,7 @@ npm run preview    # preview the built site locally
    GitHub Actions**.
 3. Push to `main`. The `deploy.yml` workflow builds and publishes `dist/`.
 
-## Blog editing
+## Blog editing (markdown + push)
 
 Posts live in `src/content/blog/*.md` with frontmatter:
 
@@ -43,14 +43,27 @@ tags: [notes, engineering]
 ---
 ```
 
-The easiest way to write posts is the CMS: open `https://johnlhuangP.github.io/admin`,
-log in, and publish. That writes the markdown file to the repo and triggers a
-deploy — no terminal needed.
+The fast path is a scaffold command so you never have to remember the
+frontmatter:
 
-One-time CMS setup: Decap's GitHub backend needs an OAuth provider. The default
-config uses Netlify's external auth (`base_url: https://api.netlify.com/auth`),
-which requires a free Netlify account and registering the site once. If you'd
-rather self-host, swap `base_url` for your own OAuth proxy.
+```bash
+npm run new-post -- "My First Post"
+```
+
+That creates `src/content/blog/my-first-post.md` with today's date and empty
+frontmatter fields. Edit it, preview with `npm run dev`, then publish with:
+
+```bash
+git add src/content/blog && git commit -m "post: My First Post" && git push
+```
+
+The GitHub Actions workflow builds and deploys automatically — no CMS or OAuth
+involved.
+
+There is also an optional Decap CMS admin at `/admin` (still configured in
+`public/admin/`) for browser-based writing, but it requires a one-time OAuth
+provider setup (e.g., Netlify's external auth) and isn't needed for this
+workflow.
 
 ## Content status
 
