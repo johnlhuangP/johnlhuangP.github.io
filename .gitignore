@@ -3,3 +3,13 @@ dist/
 .astro/
 .DS_Store
 output/
+
+# secrets & local config
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+.netlify/
+.vercel/
