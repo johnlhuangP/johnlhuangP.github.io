@@ -190,22 +190,6 @@ section#about {
   color: var(--muted);
 }
 
-.chip-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 26px;
-}
-
-.chip {
-  background: var(--accent-soft);
-  color: var(--accent-deep);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 14px;
-  border-radius: 999px;
-}
-
 /* ---------- placeholder blocks ---------- */
 .skeleton {
   display: block;

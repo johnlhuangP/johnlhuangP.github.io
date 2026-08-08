@@ -27,7 +27,6 @@ export const site = {
         placeholder: false,
       },
     ],
-    chips: ['Anthropology of food', 'Agentic AI', 'Copenhagen', 'Inference optimization'],
   },
   contact: {
     heading: 'Say hi.',
