@@ -17,15 +17,17 @@ export const site = {
   },
   about: {
     heading: 'A little about me',
-    // Placeholder paragraphs — replace with real copy from the resume.
     paragraphs: [
       {
-        text: 'Your about paragraph goes here — a sentence or two about who you are, what you work on, and what you care about.',
-        placeholder: true,
+        text: "I'm entering my last year at Brown University, pursuing a BS in APMA-CS and a concurrent master's in CS.",
+        placeholder: false,
+      },
+      {
+        text: "I'm interested in the anthropology of food, agentic AI, Copenhagen, inference optimization, and making the most of my education. I also like to ask thoughtful questions.",
+        placeholder: false,
       },
     ],
-    // Interest chips, e.g. ['Machine learning', 'Systems', 'Basketball', 'Music'].
-    chips: [],
+    chips: ['Anthropology of food', 'Agentic AI', 'Copenhagen', 'Inference optimization'],
   },
   contact: {
     heading: 'Say hi.',

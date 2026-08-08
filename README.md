@@ -63,5 +63,5 @@ involved.
 
 - Experience entries (Google, AWS, Brown ML research, AbbVie, TA) are real,
   pulled from the August 2026 resume; summaries are placeholders.
-- About copy, project rows, and the hero one-liner are placeholders.
+- About copy and the hero one-liner are filled in; project rows are placeholders.
 - The design reference lives in `mockup/landing.html`.
