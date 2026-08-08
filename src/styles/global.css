@@ -61,7 +61,7 @@ img {
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   flex-wrap: wrap;
   padding: 28px 0 24px;
@@ -588,6 +588,7 @@ section#about {
   .nav-links {
     gap: 18px;
     width: 100%;
+    justify-content: flex-end;
   }
 
   .exp-row {
