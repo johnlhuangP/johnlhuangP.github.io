@@ -207,6 +207,7 @@ section#experience {
 .exp-scatter {
   position: relative;
   height: 190px;
+  margin-top: 48px;
 }
 
 .exp-badge {
