@@ -20,8 +20,7 @@ export const site = {
   ],
   hero: {
     eyebrow: 'John Huang · Providence, RI',
-    oneLiner:
-      'Your one-line story goes here — applied math + CS, ML systems, warm and curious.', // placeholder
+    oneLiner: 'Just figuring things out',
   },
   about: {
     heading: 'A little about me',
