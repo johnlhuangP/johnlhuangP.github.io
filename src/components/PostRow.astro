@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDateFromDate } from '../lib/dates';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="post-row">
+  <div>
+    <h3 class="post-title"><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+    <p class="post-desc">{post.data.description}</p>
+  </div>
+  <div class="post-date">{formatDateFromDate(post.data.pubDate)}</div>
+</article>

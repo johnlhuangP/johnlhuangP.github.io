@@ -1,0 +1,17 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<header class="hero">
+  <p class="eyebrow">{site.hero.eyebrow}</p>
+  <h1>
+    Hi, I'm <em>John.</em>
+  </h1>
+  <p class="one-liner">{site.hero.oneLiner}</p>
+  <div class="hero-icons">
+    <a href={`mailto:${site.email}`} aria-label="Email" title="Email"><Icon name="email" /></a>
+    <a href={site.github} aria-label="GitHub" title="GitHub" target="_blank" rel="noreferrer"><Icon name="github" /></a>
+    <a href={site.linkedin} aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noreferrer"><Icon name="linkedin" /></a>
+  </div>
+</header>

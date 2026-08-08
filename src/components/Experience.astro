@@ -1,0 +1,28 @@
+---
+import { experience } from '../data/experience';
+import { formatRange } from '../lib/dates';
+
+const skeletonWidths = [78, 64, 70, 55, 48];
+---
+
+<section id="experience">
+  <div class="eyebrow">Experience</div>
+  <h2 class="section-title">Where I've worked</h2>
+  <p class="section-intro">A simple list of the places I've worked. No clutter.</p>
+  <div class="exp-list">
+    {experience.map((job, index) => (
+      <div class="exp-row">
+        <div>
+          <div class="exp-role">{job.role}</div>
+          <div class="exp-org">{job.org}</div>
+          {job.summary ? (
+            <p>{job.summary}</p>
+          ) : (
+            <span class="skeleton" style={`width: ${skeletonWidths[index % skeletonWidths.length]}%`} aria-hidden="true"></span>
+          )}
+        </div>
+        <div class="exp-date">{formatRange(job.start, job.end)}</div>
+      </div>
+    ))}
+  </div>
+</section>

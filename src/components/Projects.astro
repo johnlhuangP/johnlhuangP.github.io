@@ -1,0 +1,26 @@
+---
+import { projects } from '../data/projects';
+
+const skeletonWidths = [74, 62, 68];
+---
+
+<section id="projects">
+  <div class="eyebrow">Projects</div>
+  <h2 class="section-title">Selected projects</h2>
+  <p class="section-intro">A few things I've built, with a line about each. The rest lives on GitHub.</p>
+  <div class="project-list">
+    {projects.map((project, index) => (
+      <div class="project-row">
+        <div class="project-head">
+          <div class="project-title">{project.title}</div>
+          <div class="project-tools">{project.tools ?? ''}</div>
+        </div>
+        {project.description ? (
+          <p>{project.description}</p>
+        ) : (
+          <span class="skeleton" style={`width: ${skeletonWidths[index % skeletonWidths.length]}%`} aria-hidden="true"></span>
+        )}
+      </div>
+    ))}
+  </div>
+</section>

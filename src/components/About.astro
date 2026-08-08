@@ -1,0 +1,18 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="about">
+  <div class="eyebrow">About</div>
+  <div class="about-copy">
+    <h2>{site.about.heading}</h2>
+    {site.about.paragraphs.map((paragraph) => (
+      <p class:list={{ placeholder: paragraph.placeholder }}>{paragraph.text}</p>
+    ))}
+    {site.about.chips.length > 0 && (
+      <div class="chip-row">
+        {site.about.chips.map((chip) => <span class="chip">{chip}</span>)}
+      </div>
+    )}
+  </div>
+</section>

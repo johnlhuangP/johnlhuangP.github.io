@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import { sortPostsByDate } from '../lib/dates';
+import PostRow from './PostRow.astro';
+
+const posts = sortPostsByDate(await getCollection('blog')).slice(0, 2);
+---
+
+<section id="blog">
+  <div class="eyebrow">Blog</div>
+  <h2 class="section-title">Latest writing</h2>
+  <p class="section-intro">Long-form thoughts and write-ups.</p>
+  <div class="post-list">
+    {posts.length > 0 ? (
+      posts.map((post) => (
+        <PostRow post={post} />
+      ))
+    ) : (
+      <p class="empty-note">No posts yet — the first one is on its way.</p>
+    )}
+  </div>
+  <a class="all-posts" href="/blog">All posts →</a>
+</section>

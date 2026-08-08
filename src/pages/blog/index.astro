@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { sortPostsByDate } from '../../lib/dates';
+import { site } from '../../data/site';
+import PostRow from '../../components/PostRow.astro';
+
+const posts = sortPostsByDate(await getCollection('blog'));
+---
+
+<Base title={`Blog — ${site.name}`} description={`Writing by ${site.name}.`}>
+  <div class="page">
+    <section class="blog-heading">
+      <div class="eyebrow">Blog</div>
+      <h2 class="section-title">Writing</h2>
+      <p class="section-intro">Long-form thoughts and write-ups.</p>
+    </section>
+    <div class="post-list">
+      {posts.length > 0 ? (
+        posts.map((post) => (
+          <PostRow post={post} />
+        ))
+      ) : (
+        <p class="empty-note">No posts yet — the first one is on its way.</p>
+      )}
+    </div>
+  </div>
+</Base>

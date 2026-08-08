@@ -1,0 +1,24 @@
+backend:
+  name: github
+  # Repo must be renamed to johnlhuangP.github.io before publishing from the CMS.
+  repo: johnlhuangP/johnlhuangP.github.io
+  branch: main
+  # External OAuth via Netlify — see README "Blog editing" for the one-time setup.
+  base_url: https://api.netlify.com/auth
+
+media_folder: public/images/blog
+public_folder: /images/blog
+
+collections:
+  - name: posts
+    label: Posts
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{pubDate}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Publish Date, name: pubDate, widget: datetime, format: "YYYY-MM-DD" }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Body, name: body, widget: markdown }
