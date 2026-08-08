@@ -68,15 +68,6 @@ img {
   border-bottom: 1px solid var(--line);
 }
 
-.brand {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  text-decoration: none;
-}
-
 .nav-links {
   display: flex;
   gap: 28px;
