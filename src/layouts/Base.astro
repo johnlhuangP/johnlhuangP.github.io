@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const isBlogPage = currentPath.startsWith('/blog');
+const isHome = currentPath === '/';
 ---
 
 <!doctype html>
@@ -27,24 +27,12 @@ const isBlogPage = currentPath.startsWith('/blog');
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <nav class="page nav">
-      <ul class="nav-links">
-        {site.nav.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class:list={{
-                active: item.href === '/blog' && isBlogPage,
-              }}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-
     <main>
+      {!isHome && (
+        <div class="page back-link-wrap">
+          <a class="back-link" href="/">← Home</a>
+        </div>
+      )}
       <slot />
     </main>
 

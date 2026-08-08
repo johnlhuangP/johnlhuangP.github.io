@@ -11,13 +11,6 @@ export const site = {
     description:
       "John Huang's personal site — applied mathematics and computer science at Brown, machine learning research, and building things.",
   },
-  nav: [
-    { label: 'About', href: '/#about' },
-    { label: 'Experience', href: '/#experience' },
-    { label: 'Projects', href: '/#projects' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Contact', href: '/#contact' },
-  ],
   hero: {
     // eyebrow: 'Millbrae, CA',
     oneLiner: 'Just figuring things out',
