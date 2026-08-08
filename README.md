@@ -61,7 +61,7 @@ involved.
 
 ## Content status
 
-- Experience entries (Google, AWS, Brown ML research, AbbVie, TA) are real,
-  pulled from the August 2026 resume; summaries are placeholders.
+- Experience is a scatter of real company logos with click-to-reveal detail
+  cards; roles and dates come from the August 2026 resume.
 - About copy and the hero one-liner are filled in; project rows are placeholders.
 - The design reference lives in `mockup/landing.html`.

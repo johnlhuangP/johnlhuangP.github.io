@@ -1,28 +1,96 @@
 ---
-import { experience } from '../data/experience';
+import BrandIcon from './BrandIcon.astro';
+import { companies } from '../data/experience';
 import { formatRange } from '../lib/dates';
 
-const skeletonWidths = [78, 64, 70, 55, 48];
+// Deterministic scatter positions (percentages + slight rotation).
+const positions = [
+  { top: 12, left: 4, rotate: -4 },
+  { top: 26, left: 60, rotate: 2 },
+  { top: 56, left: 16, rotate: 3 },
+  { top: 70, left: 66, rotate: -2 },
+];
+
+const modalData = companies.map((company) => ({
+  id: company.id,
+  name: company.name,
+  roles: company.roles.map((role) => ({
+    role: role.role,
+    dates: formatRange(role.start, role.end),
+    summary: role.summary ?? '',
+  })),
+}));
 ---
 
 <section id="experience">
   <div class="eyebrow">Experience</div>
   <h2 class="section-title">Where I've worked</h2>
-  <p class="section-intro">A simple list of the places I've worked. No clutter.</p>
-  <div class="exp-list">
-    {experience.map((job, index) => (
-      <div class="exp-row">
-        <div>
-          <div class="exp-role">{job.role}</div>
-          <div class="exp-org">{job.org}</div>
-          {job.summary ? (
-            <p>{job.summary}</p>
-          ) : (
-            <span class="skeleton" style={`width: ${skeletonWidths[index % skeletonWidths.length]}%`} aria-hidden="true"></span>
-          )}
-        </div>
-        <div class="exp-date">{formatRange(job.start, job.end)}</div>
-      </div>
+  <p class="section-intro">Click a logo to see the details.</p>
+  <div class="exp-scatter">
+    {companies.map((company, index) => (
+      <button
+        type="button"
+        class="exp-badge"
+        data-company={company.id}
+        style={`--x: ${positions[index].left}%; --y: ${positions[index].top}%; --r: ${positions[index].rotate}deg`}
+        aria-label={`Details for ${company.name}`}
+      >
+        <BrandIcon name={company.icon} />
+      </button>
     ))}
   </div>
 </section>
+
+<div class="exp-modal" data-exp-modal hidden>
+  <div class="exp-modal-backdrop" data-exp-close></div>
+  <div class="exp-modal-card" role="dialog" aria-modal="true" aria-labelledby="exp-modal-title">
+    <button type="button" class="exp-modal-close" data-exp-close aria-label="Close">×</button>
+    <h3 id="exp-modal-title" class="exp-modal-name"></h3>
+    <ul class="exp-modal-roles"></ul>
+  </div>
+</div>
+
+<script is:inline define:vars={{ modalData }}>
+  const badges = Array.from(document.querySelectorAll('.exp-badge'));
+  const modal = document.querySelector('[data-exp-modal]');
+  const nameEl = modal.querySelector('.exp-modal-name');
+  const rolesEl = modal.querySelector('.exp-modal-roles');
+  const data = new Map(modalData.map((company) => [company.id, company]));
+  let lastFocused = null;
+
+  function render(id) {
+    const company = data.get(id);
+    if (!company) return;
+    nameEl.textContent = company.name;
+    rolesEl.innerHTML = company.roles
+      .map(
+        (role) => `
+          <li class="exp-modal-role">
+            <div class="exp-modal-role-title">${role.role}</div>
+            <div class="exp-modal-role-dates">${role.dates}</div>
+            ${role.summary ? `<p class="exp-modal-role-summary">${role.summary}</p>` : ''}
+          </li>`
+      )
+      .join('');
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    lastFocused = document.activeElement;
+    modal.querySelector('.exp-modal-close').focus();
+  }
+
+  function close() {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+    if (lastFocused) lastFocused.focus();
+  }
+
+  badges.forEach((badge) => {
+    badge.addEventListener('click', () => render(badge.dataset.company));
+  });
+  modal.querySelectorAll('[data-exp-close]').forEach((el) => {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) close();
+  });
+</script>

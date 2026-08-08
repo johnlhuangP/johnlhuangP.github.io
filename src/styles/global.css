@@ -200,37 +200,130 @@ section#about {
 }
 
 /* ---------- experience ---------- */
-.exp-list {
-  border-top: 1px solid var(--line);
+.exp-scatter {
+  position: relative;
+  height: 480px;
+  margin-top: 12px;
 }
 
-.exp-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: baseline;
-  padding: 24px 4px;
-  border-bottom: 1px solid var(--line);
+.exp-badge {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: rotate(var(--r));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.exp-role {
+.exp-badge:hover,
+.exp-badge:focus-visible {
+  transform: translateY(-5px) scale(1.05) rotate(0deg);
+  box-shadow: 0 26px 46px -22px rgba(43, 35, 29, 0.45);
+}
+
+.exp-badge svg {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+
+.exp-badge[data-company="aws"] svg {
+  height: 36px;
+}
+
+.exp-badge[data-company="brown"] svg {
+  height: 22px;
+}
+
+/* ---------- experience modal ---------- */
+.exp-modal[hidden] {
+  display: none;
+}
+
+.exp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.exp-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 35, 29, 0.45);
+}
+
+.exp-modal-card {
+  position: relative;
+  background: var(--paper);
+  border-radius: 20px;
+  max-width: 440px;
+  width: 100%;
+  padding: 32px;
+  box-shadow: 0 30px 60px -25px rgba(43, 35, 29, 0.5);
+}
+
+.exp-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.exp-modal-close:hover {
+  color: var(--accent);
+}
+
+.exp-modal-name {
   font-family: var(--serif);
-  font-size: 21px;
+  font-size: 26px;
+  margin-bottom: 18px;
+  padding-right: 24px;
+}
+
+.exp-modal-roles {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.exp-modal-role-title {
   font-weight: 600;
-  margin-bottom: 4px;
+  color: var(--ink);
 }
 
-.exp-org {
-  color: var(--ink-soft);
-  font-size: 15px;
-}
-
-.exp-date {
+.exp-modal-role-dates {
   font-size: 13px;
   color: var(--muted);
-  white-space: nowrap;
-  padding-top: 6px;
+  margin-top: 2px;
   font-variant-numeric: tabular-nums;
+}
+
+.exp-modal-role-summary {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 /* ---------- projects ---------- */
@@ -540,6 +633,25 @@ section#about {
 
   .post-row {
     grid-template-columns: 1fr;
+  }
+
+  .exp-scatter {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .exp-badge {
+    position: static;
+    transform: none;
+    padding: 16px 20px;
+  }
+
+  .exp-badge:hover {
+    transform: translateY(-3px) scale(1.03);
   }
 
   .contact-line {
