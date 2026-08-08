@@ -7,7 +7,6 @@ the `8_2026_master.pdf` resume once the copy is written.
 ## Stack
 
 - [Astro](https://astro.build) — static site, content collections for the blog
-- Decap CMS — write blog posts from the browser at `/admin`
 - GitHub Pages — automatic deploy from `main` via GitHub Actions
 
 ## Development
@@ -59,11 +58,6 @@ git add src/content/blog && git commit -m "post: My First Post" && git push
 
 The GitHub Actions workflow builds and deploys automatically — no CMS or OAuth
 involved.
-
-There is also an optional Decap CMS admin at `/admin` (still configured in
-`public/admin/`) for browser-based writing, but it requires a one-time OAuth
-provider setup (e.g., Netlify's external auth) and isn't needed for this
-workflow.
 
 ## Content status
 
