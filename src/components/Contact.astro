@@ -4,14 +4,16 @@ import { site } from '../data/site';
 ---
 
 <section id="contact">
-  <div class="contact-card">
+  <div class="page">
     <div class="eyebrow">Contact</div>
     <h2>{site.contact.heading}</h2>
     <p>{site.contact.blurb}</p>
-    <a class="email-link" href={`mailto:${site.email}`}>{site.email}</a>
-    <div class="contact-icons">
-      <a href={site.github} aria-label="GitHub" title="GitHub" target="_blank" rel="noreferrer"><Icon name="github" /></a>
-      <a href={site.linkedin} aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noreferrer"><Icon name="linkedin" /></a>
+    <div class="contact-line">
+      <a class="email-link" href={`mailto:${site.email}`}>{site.email}</a>
+      <div class="contact-icons">
+        <a href={site.github} aria-label="GitHub" title="GitHub" target="_blank" rel="noreferrer"><Icon name="github" /></a>
+        <a href={site.linkedin} aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noreferrer"><Icon name="linkedin" /></a>
+      </div>
     </div>
   </div>
 </section>

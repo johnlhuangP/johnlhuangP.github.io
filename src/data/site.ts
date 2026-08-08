@@ -19,7 +19,7 @@ export const site = {
     { label: 'Contact', href: '/#contact' },
   ],
   hero: {
-    eyebrow: 'John Huang · Providence, RI',
+    // eyebrow: 'Millbrae, CA',
     oneLiner: 'Just figuring things out',
   },
   about: {
