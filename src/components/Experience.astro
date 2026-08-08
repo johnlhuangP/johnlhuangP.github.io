@@ -5,10 +5,10 @@ import { formatRange } from '../lib/dates';
 
 // Deterministic scatter positions (percentages + slight rotation).
 const positions = [
-  { top: 12, left: 4, rotate: -4 },
-  { top: 26, left: 60, rotate: 2 },
-  { top: 56, left: 16, rotate: 3 },
-  { top: 70, left: 66, rotate: -2 },
+  { top: 2, left: 9, rotate: -5 },
+  { top: 8, left: 44, rotate: 3 },
+  { top: 46, left: 18, rotate: -2 },
+  { top: 40, left: 62, rotate: 4 },
 ];
 
 const modalData = companies.map((company) => ({
@@ -25,7 +25,6 @@ const modalData = companies.map((company) => ({
 <section id="experience">
   <div class="eyebrow">Experience</div>
   <h2 class="section-title">Where I've worked</h2>
-  <p class="section-intro">Click a logo to see the details.</p>
   <div class="exp-scatter">
     {companies.map((company, index) => (
       <button

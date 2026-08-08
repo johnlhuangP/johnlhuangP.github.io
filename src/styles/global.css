@@ -116,6 +116,10 @@ section#about {
   padding-top: 36px;
 }
 
+section#experience {
+  padding-top: 36px;
+}
+
 /* ---------- hero ---------- */
 .hero {
   padding: 110px 0 48px;
@@ -202,8 +206,7 @@ section#about {
 /* ---------- experience ---------- */
 .exp-scatter {
   position: relative;
-  height: 480px;
-  margin-top: 12px;
+  height: 190px;
 }
 
 .exp-badge {
