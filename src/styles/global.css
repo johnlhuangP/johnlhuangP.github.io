@@ -138,9 +138,13 @@ section[id] {
   scroll-margin-top: 24px;
 }
 
+section#about {
+  padding-top: 36px;
+}
+
 /* ---------- hero ---------- */
 .hero {
-  padding: 110px 0 90px;
+  padding: 110px 0 48px;
   max-width: 820px;
 }
 
